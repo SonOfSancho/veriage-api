@@ -1,9 +1,13 @@
 import requests
 import network_as_code as nac
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Print full response
 
-key = "57bf2b3f70msh9bf3faea7510b98p175ea9jsn9a03050ce83f"
+key = os.getenv("API_KEY")
 prueba = "+99999991000"
 simprueba = "+34640197653"
 simdata = {
