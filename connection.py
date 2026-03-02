@@ -40,20 +40,6 @@ def testincorrect(ans):
     print("Incorrect")
     print("Status Code: ", ans.status_code)
 
-def phoneverif(phone):
-    url = "https://network-as-code.p-eu.rapidapi.com/passthrough/camara/v1/number-verification/number-verification/v0/verify"
-    payload = {"phoneNumber": phone}
-    headers = {"Content-Type": "application/json", "x-rapidapi-host": "network-as-code.nokia.rapidapi.com", "x-rapidapi-key": key}
-    ans = requests.post(url, json=payload, headers=headers)
-    if (ans.status_code == 200):
-        data = ans.json()
-        res = data.get("verificationResult")
-        testcorrect(ans, res)#eliminar al terminar
-        return(res)
-    else:
-        testincorrect(ans)#eliminar despues
-        return (-1)
-
 
 def swapverif(phone):
     url = "https://network-as-code.p-eu.rapidapi.com/passthrough/camara/v1/sim-swap/sim-swap/v0/check"
@@ -71,6 +57,5 @@ def ageverif(phone):
     data = client.kyc.verify_age(phone_number=phone, age_threshold=18)
     return(data.age_check)
 
-print(phoneverif(prueba))
 print(swapverif(prueba))
 print(ageverif(prueba))
