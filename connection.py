@@ -59,20 +59,14 @@ def swapverif(phone):
     if (ans.status_code == 200):
         data = ans.json()
         res = data.get("swapped")
-        testcorrect(ans, res)#eliminar al final
         return(res)
     else:
-        testincorrect(ans)#eliminar al final
         return(-1)
 
-def ageverif(phone, sim):
-    match = client.kyc.match_customer(phone_number=phone)
-    res = client.kyc.verify_age(age_threshhold=18)
-    print(res)
-    return(res)
+def ageverif(phone):
+    data = client.kyc.verify_age(phone_number=phone, age_threshold=18)
+    return(data.age_check)
 
-phoneverif(simprueba)
-
-swapverif(prueba)
-
-ageverif(prueba, simdata)
+print(phoneverif(prueba))
+print(swapverif(prueba))
+print(ageverif(prueba))
