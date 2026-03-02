@@ -24,34 +24,38 @@ async def root():
 @app.get("/api/v1/widget", response_class=HTMLResponse)
 async def get_auth_render():
     return f"""
-        <form id='form'>
-            <input type='tel' name='number'>
-            <button type='button' id='submit'>Submit</button>
-        </form>
+<head>
+</head>
+<body>
+    <form id='form'>
+        <input type='tel' name='number'>
+        <button type='button' id='submit'>Submit</button>
+    </form>
 
-        <script>
-const button = document.getElementById('submit');
+    <script>
+        const button = document.getElementById('submit');
 
-button.addEventListener("click", async () => {{
-    const form = document.getElementById('form');
-    const formData = new FormData(form);
-    
-    const data = {{
-        number: formData.get('number')
-    }};
+        button.addEventListener("click", async () => {{
+            const form = document.getElementById('form');
+            const formData = new FormData(form);
+            
+            const data = {{
+                number: formData.get('number')
+            }};
 
-    const response = await fetch('{HOST}/api/v1/validate', {{
-        method: 'POST',
-        headers: {{
-            'Content-Type': 'application/json',
-        }},
-        body: JSON.stringify(data),
-    }});
-    
-    const result = await response.json();
-    console.log(result);
-}});
-        </script>
+            const response = await fetch('{HOST}/api/v1/validate', {{
+                method: 'POST',
+                headers: {{
+                    'Content-Type': 'application/json',
+                }},
+                body: JSON.stringify(data),
+            }});
+            
+            const result = await response.json();
+            console.log(result);
+        }});
+    </script>
+</body>
     """
 
 @app.post("/api/v1/validate")
