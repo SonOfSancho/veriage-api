@@ -50,6 +50,8 @@ async def post_validation(number: TelNum):
     phone = number.model_dump()["number"]
 
     simswap = swapverif(phone)
+
+    print(simswap)
     
     if simswap == -1:
         raise HTTPException(status_code=404, detail="Phone not found")
