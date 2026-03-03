@@ -1,8 +1,7 @@
 from requests import status_codes
 
-from fastapi import FastAPI, Path, Query, HTTPException
-from fastapi.responses import Response, HTMLResponse
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from connection import swapverif, ageverif
 from dotenv import load_dotenv

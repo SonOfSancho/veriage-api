@@ -42,5 +42,5 @@ def swapverif(phone):
         return(-1)
 
 def ageverif(phone):
-    data = client.kyc.verify_age(phone_number=phone, age_threshold=18)
+    data = client.kyc.verify_age(phone_number=phone, age_threshold=16)
     return(data.age_check)
