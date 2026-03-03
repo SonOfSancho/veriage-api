@@ -5,8 +5,6 @@ import os
 
 load_dotenv()
 
-# Print full response
-
 key = os.getenv("API_KEY")
 prueba = "+99999991000"
 simprueba = "+34640197653"
@@ -30,16 +28,6 @@ num = 240
 
 client = nac.NetworkAsCodeClient(token=key)
 
-def testcorrect(ans, res):
-    print("Correct")
-    print("Status Code: ", ans.status_code)
-    print("Raw Response: ", ans.text)
-    print("Resultado: ", res)
-
-def testincorrect(ans):
-    print("Incorrect")
-    print("Status Code: ", ans.status_code)
-
 
 def swapverif(phone):
     url = "https://network-as-code.p-eu.rapidapi.com/passthrough/camara/v1/sim-swap/sim-swap/v0/check"
@@ -56,6 +44,3 @@ def swapverif(phone):
 def ageverif(phone):
     data = client.kyc.verify_age(phone_number=phone, age_threshold=18)
     return(data.age_check)
-
-print(swapverif(prueba))
-print(ageverif(prueba))
